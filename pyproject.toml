@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "crimebot"
+version = "0.1.0"
+description = "A parody bot designed come up with, create, articulate, and even to do the crime so you don't do the time. (For entertainment purposes only)"
+authors = ["blak <blakdayz@gmail.com"]
+readme = "README.md"
+packages = [{include="crimebot/*.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+uvicorn = "^0.32.1"
+fastapi = "^0.115.5"
+transformers = "^4.46.3"
+
+optimum = "^1.23.3"
+llama-cpp-python = "^0.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
