@@ -14,6 +14,14 @@ transformers = "^4.46.3"
 
 optimum = "^1.23.3"
 llama-cpp-python = "^0.3.2"
+gtts = "^2.5.4"
+llvmlite = "^0.43.0"
+numba = "^0.60.0"
+outetts = "^0.2.1"
+cryptography = "^44.0.0"
+crypto = "^1.4.1"
+pycrypto = "^2.6.1"
+docker = "^7.1.0"
 
 
 [build-system]

@@ -1,0 +1,112 @@
+[
+    {
+        "name": "The Fool",
+        "positive": "The Fool represents the beginning of a new journey or adventure. It signifies optimism and faith in the unknown.",
+        "negative": "Reversed The Fool can indicate a lack of direction or purpose, as well as procrastination."
+    },
+    {
+        "name": "The Magician",
+        "positive": "The Magician represents resourcefulness, skill, and control over one's life. In a positive sense, it signifies the ability to manifest one's desires.",
+        "negative": "Reversed The Magician can indicate manipulation, deceit, or an over-reliance on illusion rather than reality."
+    },
+    {
+        "name": "The High Priestess",
+        "positive": "The High Priestess embodies intuition, mystery, and wisdom. She symbolizes hidden knowledge and the power of the subconscious.",
+        "negative": "Reversed The High Priestess can indicate secretiveness, confusion, or a lack of clarity."
+    },
+    {
+        "name": "The Empress",
+        "positive": "The Empress represents fertility, growth, and abundance. She symbolizes nurturing, creativity, and sensuality.",
+        "negative": "Reversed The Empress can indicate stagnation, barrenness, or a lack of emotional fulfillment."
+    },
+    {
+        "name": "The Emperor",
+        "positive": "The Emperor represents authority, structure, and stability. He embodies discipline, power, and control.",
+        "negative": "Reversed The Emperor can indicate tyranny, rigidity, or a lack of direction."
+    },
+    {
+        "name": "The Hierophant",
+        "positive": "The Hierophant represents tradition, conformity, and morality. He symbolizes wisdom, spirituality, and the search for meaning.",
+        "negative": "Reversed The Hierophant can indicate hypocrisy, dogmatism, or a lack of original thought."
+    },
+    {
+        "name": "The Lovers",
+        "positive": "The Lovers represent love, harmony, and union. They symbolize deep connection, passion, and romantic relationships.",
+        "negative": "Reversed The Lovers can indicate conflict, disharmony, or a lack of emotional balance."
+    },
+    {
+        "name": "The Chariot",
+        "positive": "The Chariot represents self-control, determination, and the power to overcome obstacles. It symbolizes victory, success, and triumph.",
+        "negative": "Reversed The Chariot can indicate aggression, stubbornness, or a lack of focus."
+    },
+    {
+        "name": "Strength",
+        "positive": "Strength represents inner power, courage, and resilience. It symbolizes the ability to overcome challenges and maintain balance during difficult times.",
+        "negative": "Reversed Strength can indicate a lack of self-control, fear, or emotional weakness."
+    },
+    {
+        "name": "The Hermit",
+        "positive": "The Hermit represents introspection, solitude, and spiritual seeking. He symbolizes wisdom, knowledge, and the quest for enlightenment.",
+        "negative": "Reversed The Hermit can indicate withdrawal, escapism, or a lack of connection with others."
+    },
+    {
+        "name": "The Wheel of Fortune",
+        "positive": "The Wheel of Fortune represents change, cycles, and the interconnectedness of all things. It symbolizes fate, destiny, and the natural flow of life.",
+        "negative": "Reversed The Wheel of Fortune can indicate instability, upheaval, or feeling trapped in a cycle of misfortune."
+    },
+    {
+        "name": "Justice",
+        "positive": "Justice represents fairness, balance, and the moral order. It symbolizes truth, karma, and the consequences of one's actions.",
+        "negative": "Reversed Justice can indicate injustice, imbalance, or a lack of accountability."
+    },
+    {
+        "name": "The Hanged Man",
+        "positive": "The Hanged Man represents sacrifice, detachment, and patience. He symbolizes the need to let go of control and trust the process.",
+        "negative": "Reversed The Hanged Man can indicate stagnation, avoidance, or a reluctance to face challenges."
+    },
+    {
+        "name": "Death",
+        "positive": "Death represents transformation, change, and endings. It symbolizes the opportunity for rebirth, renewal, and personal growth.",
+        "negative": "Reversed Death can indicate resistance to change, fear of the unknown, or a refusal to let go of the past."
+    },
+    {
+        "name": "Temperance",
+        "positive": "Temperance represents moderation, harmony, and balance. It symbolizes self-control, patience, and the integration of mind, body, and spirit.",
+        "negative": "Reversed Temperance can indicate excess, instability, or a lack of self-discipline."
+    },
+    {
+        "name": "The Devil",
+        "positive": "The Devil represents pleasure, passion, and material desires. He symbolizes the shadow self, temptation, and the power of choice.",
+        "negative": "Reversed The Devil can indicate addiction, obsession, or a lack of self-awareness."
+    },
+    {
+        "name": "The Tower",
+        "positive": "The Tower represents sudden change, revelation, and spiritual awakening. It symbolizes the destruction of outdated beliefs and patterns.",
+        "negative": "Reversed The Tower can indicate instability, chaos, or a refusal to confront reality."
+    },
+    {
+        "name": "The Star",
+        "positive": "The Star represents hope, faith, and the promise of the future. It symbolizes spiritual enlightenment, inspiration, and healing.",
+        "negative": "Reversed The Star can indicate disillusionment, cynicism, or a lack of motivation."
+    },
+    {
+        "name": "The Moon",
+        "positive": "The Moon represents intuition, dreams, and subconscious desires. It symbolizes creativity, imagination, and the unconscious mind.",
+        "negative": "Reversed The Moon can indicate confusion, deception, or a lack of clarity."
+    },
+    {
+        "name": "Sun",
+        "positive": "The Sun represents happiness, enlightenment, and success. It symbolizes joy, fulfillment, and the manifestation of one's dreams.",
+        "negative": "Reversed The Sun can indicate depression, disappointment, or a lack of self-worth."
+    },
+    {
+        "name": "Judgment",
+        "positive": "Judgment represents spiritual awakening, resurrection, and the call to fulfill one's purpose. It symbolizes forgiveness, redemption, and new beginnings.",
+        "negative": "Reversed Judgment can indicate judgmentalism, guilt, or a lack of self-forgiveness."
+    },
+    {
+        "name": "The World",
+        "positive": "The World represents completion, achievement, and the fulfillment of one's desires. It symbolizes wholeness, unity, and the realization of one's potential.",
+        "negative": "Reversed The World can indicate restlessness, disillusionment, or a lack of direction."
+    }
+]
