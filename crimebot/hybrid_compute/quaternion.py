@@ -1,6 +1,7 @@
 """
 Quaternion class for quaternion operations
 """
+
 import json
 import logging
 
@@ -11,6 +12,7 @@ class Quaternion:
     """
     Class for representing quaternions and performing operations on them.
     """
+
     def __init__(self, w=0, x=0, y=0, z=0):
         """
         Initialize a quaternion.
@@ -25,7 +27,7 @@ class Quaternion:
         self._z: float = z
 
     @property
-    def w(self)->float:
+    def w(self) -> float:
         """
         Get the scalar w component of the quaternion.
         :return:  The scalar w component of the quaternion.
@@ -33,7 +35,7 @@ class Quaternion:
         return self._w
 
     @property
-    def x(self)->float:
+    def x(self) -> float:
         """
         Get the vectorized x component of the quaternion.
         :return: The vectorized x component of the quaternion.
@@ -41,7 +43,7 @@ class Quaternion:
         return self._x
 
     @property
-    def y(self)->float:
+    def y(self) -> float:
         """
         Get the vectorized y component of the quaternion.
         :return: The vectorized y component of the quaternion.
@@ -49,7 +51,7 @@ class Quaternion:
         return self._y
 
     @property
-    def z(self)->float:
+    def z(self) -> float:
         """
         Get the vectorized z component of the quaternion.
         :return: The vectorized z component of the quaternion.
@@ -58,7 +60,7 @@ class Quaternion:
 
     def __mul__(self, other):
         if isinstance(other, Quaternion):
-            return Quaternion( # type: ignore # noqa
+            return Quaternion(  # type: ignore # noqa
                 self._w * other.w
                 - self._x * other.x
                 - self._y * other.y
@@ -81,14 +83,14 @@ class Quaternion:
                 self._w * other, self._x * other, self._y * other, self._z * other
             )
 
-    def conjugate(self)->"Quaternion":
+    def conjugate(self) -> "Quaternion":
         """
         Get the conjugate of the quaternion.
         :return:
         """
         return Quaternion(self._w, -self._x, -self._y, -self._z)
 
-    def normalize(self)->"Quaternion":
+    def normalize(self) -> "Quaternion":
         """
         Normalize the quaternion.
         :return:
@@ -98,7 +100,7 @@ class Quaternion:
             self._w / norm, self._x / norm, self._y / norm, self._z / norm
         )
 
-    def round_components(self, decimal_places=0)->"Quaternion":
+    def round_components(self, decimal_places=0) -> "Quaternion":
         """
         Round the components of the quaternion.
         :param decimal_places: An integer number of decimal places to round to.
@@ -110,7 +112,7 @@ class Quaternion:
         self._z = round(self._z, decimal_places)
         return self
 
-    def threshold_zero(self, threshold=1e-10)->"Quaternion":
+    def threshold_zero(self, threshold=1e-10) -> "Quaternion":
         """
         Threshold the quaternion components to zero if they are below a certain threshold.
         :param threshold:
@@ -132,7 +134,7 @@ class Quaternion:
         return {"w": self._w, "x": self._x, "y": self._y, "z": self._z}
 
     @staticmethod
-    def from_dict(data)->"Quaternion":
+    def from_dict(data) -> "Quaternion":
         """
         Create a quaternion from a dictionary.
         :param data:
@@ -148,7 +150,7 @@ class Quaternion:
         return f"Quaternion({self._w}, {self._x}, {self._y}, {self._z})"
 
     @classmethod
-    def generate_random_quaternion(cls)->"Quaternion":
+    def generate_random_quaternion(cls) -> "Quaternion":
         """
         Generate a random quaternion.
         :return:
@@ -209,7 +211,7 @@ class Quaternion:
             np.isclose(self._w, other._w, atol=atol)
             and np.isclose(self._x, other._x, atol=atol)
             and np.isclose(self._y, other._y, atol=atol)
-            and np.isclose(self._z, other._z,atol=atol)
+            and np.isclose(self._z, other._z, atol=atol)
         )
 
     def __eq__(self, other):
@@ -235,12 +237,9 @@ class Quaternion:
         """
         return hash((self._w, self._x, self._y, self._z))
 
-
-
-    def as_tuple(self)->tuple:
+    def as_tuple(self) -> tuple:
         """
         Get the quaternion components as a tuple.
         :return: A tuple of the quaternion components.
         """
         return self._w, self._x, self._y, self._z
-

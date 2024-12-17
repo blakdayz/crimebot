@@ -7,7 +7,7 @@ class QuaternionEncoder:
         quaternions = []
         scale_factor = 10000  # Example scale factor to shift decimal points
         for i in range(0, len(message), 4):
-            chars = message[i:i + 4].ljust(4, "\x00")
+            chars = message[i : i + 4].ljust(4, "\x00")
             w = ord(chars[0])
             x = ord(chars[1])
             y = ord(chars[2])

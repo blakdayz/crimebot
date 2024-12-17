@@ -11,11 +11,14 @@ DOCKER_COMPOSE_FILE = ".conf/docker-compose.yaml"
 DOCKER_COMPOSE_COMMAND = "docker-compose up --build -d"
 DOCKER_CLIENT = DockerClient(base_url="unix://" + os.environ["DOCKER_SOCKET"])
 
+
 def get_docker_compose():
     with open(DOCKER_COMPOSE_FILE) as f:
         return yaml.safe_load(f)
 
+
 app = FastAPI()
+
 
 @app.post("/start")
 async def start():
@@ -32,7 +35,9 @@ async def start():
         for arg in docker_compose_run["args"]:
             command.append(arg)
 
-        container = DOCKER_CLIENT.create_container(image="your_image_name", name=container_name, command=command)
+        container = DOCKER_CLIENT.create_container(
+            image="your_image_name", name=container_name, command=command
+        )
         container.start()
 
     # Install Metasploit in the container once it's running
@@ -46,11 +51,16 @@ async def start():
     DOCKER_WAIT_TIMEOUT = 60
     timeout = time.time() + DOCKER_WAIT_TIMEOUT
     while True:
-        container_status = DOCKER_CLIENT.inspect_container(container_id)["State"]["Status"]
+        container_status = DOCKER_CLIENT.inspect_container(container_id)["State"][
+            "Status"
+        ]
         if container_status == "running":
             break
         if time.time() > timeout:
-            raise HTTPException(status_code=500, detail="Container did not start within the specified timeout.")
+            raise HTTPException(
+                status_code=500,
+                detail="Container did not start within the specified timeout.",
+            )
         time.sleep(1)
 
     # Run the command to install Metasploit in the container

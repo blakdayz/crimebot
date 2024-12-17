@@ -2,8 +2,13 @@ import logging
 
 from PIL import Image
 
-from crimebot.obfuscator.pyc.decrypting_loader import generate_image, obfuscate_pyc, register_loader, LoadEncryptor, DecryptingLoader
-
+from crimebot.obfuscator.pyc.decrypting_loader import (
+    generate_image,
+    obfuscate_pyc,
+    register_loader,
+    LoadEncryptor,
+    DecryptingLoader,
+)
 
 
 def test_obfuscation(input_pyc, output_script, image_path):
@@ -20,7 +25,6 @@ def test_obfuscation(input_pyc, output_script, image_path):
 
     # Load and execute the obfuscated script using the custom loader
     import sys
-
 
     cryptor = LoadEncryptor()
 

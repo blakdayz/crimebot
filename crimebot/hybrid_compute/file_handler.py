@@ -1,6 +1,7 @@
 """
 This module provides a class to save and load quaternions to and from files.
 """
+
 import marshal
 from pydantic.v1 import BaseModel
 import json
@@ -10,30 +11,33 @@ from crimebot.obfuscator.pyc.decrypting_loader import generate_pyc, test_obfusca
 from crimebot.hybrid_computation.quanternion import Quaternion
 from quaternion_encoder import QuaternionEncoder as qenc
 
+
 class pyc_object(BaseModel):
     """
     Represents the structure of the pyc file
     """
+
     magic: bytes
     timestamp: bytes
     code: any
+
     def __init__(self, magic, timestamp, code, **data: any):
         super().__init__(**data)
         self.magic = magic
         self.timestamp = timestamp
         self.code = code
 
+
 class QuaternionFile(BaseModel):
     """
     Represents a compact format of quaternionic values (scalar, imaginary, imaginary, imaginary)
     """
-    magic:bytes
-    file_bytes:bytes
+
+    magic: bytes
+    file_bytes: bytes
 
     def get_magic(self):
-        return b'3754ACFF'
-
-
+        return b"3754ACFF"
 
 
 class QuaternionFileHandler:
@@ -41,15 +45,15 @@ class QuaternionFileHandler:
     Performs basic .pyc file reading, and writing operations
     Read returns a struct that is [4] bytes for the
     """
+
     def __init__(self):
-        self._encoder = qenc() # QuaternionEncoder
+        self._encoder = qenc()  # QuaternionEncoder
 
-
-    def read_pyc(self, file_path:str)-> (bytes, bytes, any):
+    def read_pyc(self, file_path: str) -> (bytes, bytes, any):
         """
-    `   Reads a  pytc file and marshals the code object. This is a 'clean' function
-        :param file_path: The pathg to the python compiled bytecode
-        :return:
+        `   Reads a  pytc file and marshals the code object. This is a 'clean' function
+            :param file_path: The pathg to the python compiled bytecode
+            :return:
         """
         try:
 
@@ -59,7 +63,7 @@ class QuaternionFileHandler:
                 code = marshal.load(f)
             return magic, timestamp, code
         except FileNotFoundError as e:
-            logging.error(f'Error during file handling: {e}')
+            logging.error(f"Error during file handling: {e}")
 
     def write_pyc(self, file_path, magic, timestamp, code):
         """
@@ -91,16 +95,16 @@ class QuaternionFileHandler:
         """
         self._encoder
         self._encoder.decode_message_compact(pycobject)
-    def create_model(self,magic, timestamp,code):
+
+    def create_model(self, magic, timestamp, code):
         """
         Creates a pyc model and return the pyc object type
         """
         pyc_object = pyc_object(magic=magic, timestamp=timestamp, code=code)
         return pyc_object
 
-
     @staticmethod
-    def save_quaternion_to_file(quaternion, filename)->bool:
+    def save_quaternion_to_file(quaternion, filename) -> bool:
         """
         Save a quaternion to a file.
         :param quaternion:  The quaternion to save.
@@ -115,9 +119,8 @@ class QuaternionFileHandler:
             logging.error(f"Failed to save quaternion to file: {e}")
             return False
 
-
     @staticmethod
-    def load_quaternion_from_file(filename: str)-> Any | None:
+    def load_quaternion_from_file(filename: str) -> Any | None:
         """
         Load a quaternion from a file
         :param filename: The file name to load the quaternion from.
@@ -132,7 +135,9 @@ class QuaternionFileHandler:
             return None
 
     @staticmethod
-    def save_list_of_quaternions_to_file(quaternion_list: List[Quaternion], filename: str):
+    def save_list_of_quaternions_to_file(
+        quaternion_list: List[Quaternion], filename: str
+    ):
         """
         Save a list of quaternions to a file.
         :param quaternion_list: The list of quaternions to save.
@@ -148,7 +153,7 @@ class QuaternionFileHandler:
             return False
 
     @staticmethod
-    def load_list_of_quaternions_from_file(filename: str)-> List[Quaternion] | None:
+    def load_list_of_quaternions_from_file(filename: str) -> List[Quaternion] | None:
         """
         Load a list of quaternions from a file
         :param filename: The file name to load the quaternions from.
@@ -164,7 +169,7 @@ class QuaternionFileHandler:
 
     @staticmethod
     def save_quaternions_to_binary(quaternions, filename):
-        with open(filename, 'wb') as f:
+        with open(filename, "wb") as f:
             for q in quaternions:
                 f.write(q.to_binary())
             # GUID will be added separately in `output_results` function
@@ -172,7 +177,7 @@ class QuaternionFileHandler:
     @staticmethod
     def load_quaternions_from_binary(filename):
         quaternions = []
-        with open(filename, 'rb') as f:
+        with open(filename, "rb") as f:
             while chunk := f.read(16):  # Each quaternion is 16 bytes (4 floats)
                 if len(chunk) < 16:
                     guid = chunk.decode()  # Last part is the GUID
@@ -227,17 +232,10 @@ class QuaternionFileHandler:
             return Quaternion.generate_random_quaternion()
 
 
-
-
-
-
-
-
-
 if __name__ == "__main__":
-    input_clean = 'example2.py'
-    output_pyc = 'pyc/example2.pyc'
+    input_clean = "example2.py"
+    output_pyc = "pyc/example2.pyc"
     generate_pyc(input_clean, output_pyc)
-    output_script = 'obfuscated_test_script.py'
-    image_path = '../obfuscator/key_image.png'
+    output_script = "obfuscated_test_script.py"
+    image_path = "../obfuscator/key_image.png"
     test_obfuscation(output_pyc, output_script, image_path)

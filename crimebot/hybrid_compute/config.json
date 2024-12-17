@@ -1,0 +1,14 @@
+{
+  "Name": "qet",
+    "Description": "Quaternion Encryption Tool",
+  "License": "None",
+  "QESVERSION": "1.0.0",
+  "ToolVersion": "1.0.0",
+  "Author": "Derek Hinch <derek.hinch@qompute.ai>",
+    "Quaternion": {
+        "w": 0.45221038844859257,
+        "x": -0.7776085550511624,
+        "y": -0.3647964675133261,
+        "z": 0.2403211122232401
+    }
+}

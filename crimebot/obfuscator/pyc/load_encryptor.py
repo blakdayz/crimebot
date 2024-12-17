@@ -50,16 +50,15 @@ class LoadEncryptor:
         return base64.b64decode(key_bytes).hex()
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Example usage of LoadEncryptor
     encryptor = LoadEncryptor()
-    with open('example.pyc', 'rb') as f:
+    with open("example.pyc", "rb") as f:
         magic = f.read(8)
         timestamp = f.read(4)
         size = f.read(4)
         code_object = marshal.load(f)
 
     encrypted_code_object = encryptor.encrypt_code_object(code_object)
-    img_with_key = encryptor.embed_key_in_image('key_image.jpg', encryptor.key)
-    img_with_key.save('obfuscated_key_image.jpg')
+    img_with_key = encryptor.embed_key_in_image("key_image.jpg", encryptor.key)
+    img_with_key.save("obfuscated_key_image.jpg")

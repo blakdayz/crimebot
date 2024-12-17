@@ -1,5 +1,3 @@
-
-
 import random
 from http.client import HTTPException
 from typing import List
@@ -240,8 +238,11 @@ async def write_malware(tasks: List[str], attribution_target: str):
         bot.tts(f"{response}")
     return json.dumps(response)
 
+
 async def get_wifi_bssids():
     return [x.strip() for x in sys.argv[1:]]
+
+
 @app.post("/crack_wifi")
 async def crack_wifi(bssids: List[str]):
     wifi_cracker = WiFiCracker("en0")
@@ -256,7 +257,9 @@ async def crack_wifi(bssids: List[str]):
             else:
                 result[bssid] = {"success": True}
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Error while cracking WiFi passwords: " + str(e))
+        raise HTTPException(
+            status_code=500, detail="Error while cracking WiFi passwords: " + str(e)
+        )
 
     return {"bssids": result}
 

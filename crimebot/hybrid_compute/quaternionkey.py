@@ -50,7 +50,7 @@ class QuaternionKey:
         except Exception as e:
             logging.error(f"Failed to save key: {e}")
 
-    def quantum_entropy(self)->float:
+    def quantum_entropy(self) -> float:
         """
         Calculate the quantum entropy of the key. This is a measure of the randomness of the key based on the
         probabilities of the components of each quaternion. A lower entropy indicates a less random key.

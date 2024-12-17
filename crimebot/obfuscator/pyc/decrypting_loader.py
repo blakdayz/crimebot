@@ -27,10 +27,10 @@ class LoadEncryptor:
         :param output_path: Output path for the .pyc file.
         """
         try:
-            code = py_compile.compile(file=src_py_path,cfile=output_path, doraise=True)
+            code = py_compile.compile(file=src_py_path, cfile=output_path, doraise=True)
 
             logging.info(f"Generated pyc file {code} to {output_path}")
-            with open(output_path, 'rb') as file:
+            with open(output_path, "rb") as file:
                 print("Dumping output file:")
                 print(file.read().hex())
                 print("End dump.")
@@ -43,7 +43,9 @@ class LoadEncryptor:
                 marshal.loads(marshal_data)
                 logging.debug("Code object correctly marshalled and deserialized")
             except Exception as e:
-                logging.error(f"Error during marshalling/deserializing code object: {e}")
+                logging.error(
+                    f"Error during marshalling/deserializing code object: {e}"
+                )
                 raise
         except Exception as e:
             logging.error(f"Error generating pyc file: {e}")
@@ -61,7 +63,7 @@ class LoadEncryptor:
             ciphertext, tag = cipher.encrypt_and_digest(code_data)
 
             encrypted_bytes = nonce + ciphertext + tag
-            encrypted_code = base64.b64encode(encrypted_bytes).decode('utf-8')
+            encrypted_code = base64.b64encode(encrypted_bytes).decode("utf-8")
 
             logging.debug(f"Encrypted code: {encrypted_code}")
 
@@ -111,6 +113,7 @@ class LoadEncryptor:
 
         return bytes(key)
 
+
 class DecryptingLoader:
     def __init__(self, image_path):
         self.image_path = image_path
@@ -123,8 +126,8 @@ class DecryptingLoader:
         return None
 
     def find_source(self, fullname):
-        if fullname == 'obfuscated_test_script':
-            return io.StringIO("__source__ = \"{}\"".format(__source__))
+        if fullname == "obfuscated_test_script":
+            return io.StringIO('__source__ = "{}"'.format(__source__))
         return None
 
     def exec_module(self, module):
@@ -184,16 +187,17 @@ class DecryptingLoader:
         logging.debug("Module loaded: {}".format(fullname))
         return module
 
-def generate_image(image_path:str):
+
+def generate_image(image_path: str):
     """
     Generates an image for key embedding.
 
     :param image_path: Path where the generated image will be saved.
     """
     width, height = 100, 100
-    img = Image.new('RGB', (width, height), color='white')
+    img = Image.new("RGB", (width, height), color="white")
     img.save(image_path)
-    logging.info(f'Generated image saved to: {image_path}')
+    logging.info(f"Generated image saved to: {image_path}")
 
 
 def generate_pyc(input_py, output_pyc):
@@ -219,7 +223,7 @@ def obfuscate_pyc(input_pyc, output_script, image_path):
 
     # Read and deserialize the code object from the pyc file
     try:
-        with open(input_pyc, 'rb') as f:
+        with open(input_pyc, "rb") as f:
             pyc_magic = f.read(4)
             pyc_timestamp = f.read(4)
             code_object_data = f.read()
@@ -230,7 +234,7 @@ def obfuscate_pyc(input_pyc, output_script, image_path):
         raise
 
     try:
-        logging.debug(f'Data after initial read: {code_object_data}')
+        logging.debug(f"Data after initial read: {code_object_data}")
         code_object = marshal.loads(code_object_data)
 
     except Exception as e:
@@ -251,7 +255,7 @@ def obfuscate_pyc(input_pyc, output_script, image_path):
     img.save(image_path)
 
     # Write the obfuscated script
-    with open(output_script, 'w') as f:
+    with open(output_script, "w") as f:
         f.write("encrypted_code = '{}'\n".format(encrypted_code))
         f.write("# This is an obfuscated Python script.\n")
         f.write("# Please use the DecryptingLoader to run it.\n")
@@ -320,10 +324,10 @@ def test_obfuscation(input_pyc, output_script, image_path):
     # Import the obfuscated module
 
 
-if __name__ == '__main__':
-    input_clean = '../payloads/example2.py'
-    output_pyc = '../payloads/example2.pyc'
+if __name__ == "__main__":
+    input_clean = "../payloads/example2.py"
+    output_pyc = "../payloads/example2.pyc"
     generate_pyc(input_clean, output_pyc)
-    output_script = '../outgoing/obfuscated_test_script.py'
-    image_path = 'key_image.png'
+    output_script = "../outgoing/obfuscated_test_script.py"
+    image_path = "key_image.png"
     test_obfuscation(output_pyc, output_script, image_path)

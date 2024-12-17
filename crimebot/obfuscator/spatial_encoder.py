@@ -1,6 +1,7 @@
 """
 This module contains the code responsible for encoding and decoding messages using quaternions.
 """
+
 import struct
 from quaternion import Quaternion
 
@@ -11,7 +12,7 @@ class QuaternionEncoder:
         quaternions = []
         scale_factor = 10000  # Example scale factor to shift decimal points
         for i in range(0, len(message), 4):
-            chars = message[i:i + 4].ljust(4, "\x00")
+            chars = message[i : i + 4].ljust(4, "\x00")
             w = ord(chars[0])
             x = ord(chars[1])
             y = ord(chars[2])
@@ -25,8 +26,8 @@ class QuaternionEncoder:
         quaternions = []
         scale_factor = 10000  # Example scale factor to shift decimal points
         for i in range(0, len(byte_data), 4):
-            chunk = byte_data[i:i + 4].ljust(4, b'\x00')
-            w, x, y, z = struct.unpack('BBBB', chunk)
+            chunk = byte_data[i : i + 4].ljust(4, b"\x00")
+            w, x, y, z = struct.unpack("BBBB", chunk)
             quaternion = Quaternion(w, x, y, z)
             quaternions.append(quaternion.to_discrete(scale_factor))
         return quaternions
@@ -50,8 +51,11 @@ class QuaternionEncoder:
         byte_data = bytearray()
         for q in quaternions:
             q.from_discrete(scale_factor)
-            byte_data.extend(struct.pack('BBBB', int(q.w), int(q.x), int(q.y), int(q.z)))
-        return bytes(byte_data).rstrip(b'\x00')
+            byte_data.extend(
+                struct.pack("BBBB", int(q.w), int(q.x), int(q.y), int(q.z))
+            )
+        return bytes(byte_data).rstrip(b"\x00")
+
 
 if __name__ == "__main__":
     # Test the encoder
