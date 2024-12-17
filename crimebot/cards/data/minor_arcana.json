@@ -1,0 +1,211 @@
+{
+    "Cups": [
+        {
+            "name": "Ace of Cups",
+            "positive": "The Ace of Cups represents emotional growth, creativity, and deep connections. It symbolizes new beginnings in matters of the heart.",
+            "negative": "Reversed The Ace of Cups can indicate emotional turmoil, stagnation, or a lack of inspiration."
+        },
+        {
+            "name": "Two of Cups",
+            "positive": "The Two of Cups represents love, harmony, and partnership. It symbolizes the joining of two souls and the beginning of a loving relationship.",
+            "negative": "Reversed The Two of Cups can indicate discord, mistrust, or an unbalanced relationship."
+        },
+        {
+            "name": "Three of Cups",
+            "positive": "The Three of Cups represents celebration, joy, and unity. It symbolizes the sharing of happiness and the joy of friendship.",
+            "negative": "Reversed The Three of Cups can indicate feelings of loneliness, jealousy, or a lack of camaraderie."
+        },
+        {
+            "name": "Four of Cups",
+            "positive": "The Four of Cups represents introspection, reflection, and the need for emotional nourishment. It symbolizes finding peace in solitude.",
+            "negative": "Reversed The Four of Cups can indicate apathy, boredom, or a lack of passion."
+        },
+        {
+            "name": "Five of Cups",
+            "positive": "The Five of Cups represents loss and grief, but also the opportunity to learn from those experiences. It symbolizes moving forward despite setbacks.",
+            "negative": "Reversed The Five of Cups can indicate dwelling on past losses and a failure to let go."
+        },
+        {
+            "name": "Six of Cups",
+            "positive": "The Six of Cups represents nostalgia, childhood memories, and the innocence of youth. It symbolizes returning to a simpler time and finding happiness in familiarity.",
+            "negative": "Reversed The Six of Cups can indicate living in the past, escapism, or a refusal to grow up."
+        },
+        {
+            "name": "Seven of Cups",
+            "positive": "The Seven of Cups represents dreams, imagination, and the potential for success. It symbolizes exploring different possibilities and making choices based on intuition.",
+            "negative": "Reversed The Seven of Cups can indicate confusion, indecision, or a lack of focus."
+        },
+        {
+            "name": "Eight of Cups",
+            "positive": "The Eight of Cups represents letting go of the past and moving forward with purpose. It symbolizes leaving old habits behind and embracing new opportunities.",
+            "negative": "Reversed The Eight of Cups can indicate regret, a fear of change, or a reluctance to let go of the familiar."
+        },
+        {
+            "name": "Nine of Cups",
+            "positive": "The Nine of Cups represents contentment, satisfaction, and fulfillment. It symbolizes achieving one's goals and living a life of happiness and abundance.",
+            "negative": "Reversed The Nine of Cups can indicate complacency, self-indulgence, or a lack of gratitude."
+        },
+        {
+            "name": "Ten of Cups",
+            "positive": "The Ten of Cups represents unity, happiness, and fulfillment in relationships. It symbolizes a harmonious family life and the realization of one's dreams.",
+            "negative": "Reversed The Ten of Cups can indicate discord, misunderstandings, or a lack of emotional connection."
+        }
+    ],
+    "Wands": [
+        {
+            "name": "Ace of Wands",
+            "positive": "The Ace of Wands represents creativity, inspiration, and the power to manifest one's desires. It symbolizes new beginnings in matters of ambition and personal growth.",
+            "negative": "Reversed The Ace of Wands can indicate a lack of motivation, stagnation, or a lack of direction."
+        },
+        {
+            "name": "Two of Wands",
+            "positive": "The Two of Wands represents decision-making, planning, and strategic thinking. It symbolizes weighing options and making important choices.",
+            "negative": "Reversed The Two of Wands can indicate indecision, procrastination, or a lack of focus."
+        },
+        {
+            "name": "Three of Wands",
+            "positive": "The Three of Wands represents expansion, progress, and the potential for success. It symbolizes taking calculated risks and reaping the rewards.",
+            "negative": "Reversed The Three of Wands can indicate feelings of isolation, fear of failure, or a reluctance to take risks."
+        },
+        {
+            "name": "Four of Wands",
+            "positive": "The Four of Wands represents celebration, stability, and the completion of projects. It symbolizes achieving milestones and finding happiness in hard work.",
+            "negative": "Reversed The Four of Wands can indicate a lack of fulfillment, dissatisfaction, or a sense of stagnation."
+        },
+        {
+            "name": "Five of Wands",
+            "positive": "The Five of Wands represents competition, determination, and the spirit of teamwork. It symbolizes overcoming obstacles and achieving success through effort.",
+            "negative": "Reversed The Five of Wands can indicate conflict, disagreements, or a lack of cooperation."
+        },
+        {
+            "name": "Six of Wands",
+            "positive": "The Six of Wands represents recognition, achievement, and the power to inspire others. It symbolizes triumph over adversity and the potential for future success.",
+            "negative": "Reversed The Six of Wands can indicate arrogance, a lack of humility, or a failure to acknowledge one's own accomplishments."
+        },
+        {
+            "name": "Seven of Wands",
+            "positive": "The Seven of Wands represents defending one's position and standing up for one's beliefs. It symbolizes perseverance, determination, and the ability to overcome obstacles.",
+            "negative": "Reversed The Seven of Wands can indicate aggression, stubbornness, or a refusal to back down."
+        },
+        {
+            "name": "Eight of Wands",
+            "positive": "The Eight of Wands represents swift progress, speedy movement, and the realization of one's goals. It symbolizes taking action and seeing results.",
+            "negative": "Reversed The Eight of Wands can indicate delays, setbacks, or a lack of forward momentum."
+        },
+        {
+            "name": "Nine of Wands",
+            "positive": "The Nine of Wands represents resilience, determination, and the ability to endure hardship. It symbolizes overcoming challenges and emerging stronger.",
+            "negative": "Reversed The Nine of Wands can indicate fatigue, burnout, or a lack of motivation."
+        },
+        {
+            "name": "Ten of Wands",
+            "positive": "The Ten of Wands represents responsibility, commitment, and the power to accomplish great things. It symbolizes taking on challenges and achieving success through hard work.",
+            "negative": "Reversed The Ten of Wands can indicate overburdening oneself, feeling overwhelmed, or a lack of support."
+        }
+    ],
+    "Swords": [
+        {
+            "name": "Ace of Swords",
+            "positive": "The Ace of Swords represents clarity, insight, and the power of the mind. It symbolizes new beginnings in matters of mental growth and decision-making.",
+            "negative": "Reversed The Ace of Swords can indicate confusion, indecision, or a lack of focus."
+        },
+        {
+            "name": "Two of Swords",
+            "positive": "The Two of Swords represents objectivity, detachment, and the ability to make tough choices. It symbolizes weighing options and making decisions based on logic rather than emotion.",
+            "negative": "Reversed The Two of Swords can indicate indecision, fear of change, or a refusal to face reality."
+        },
+        {
+            "name": "Three of Swords",
+            "positive": "The Three of Swords represents healing, emotional growth, and the ability to move on from past wounds. It symbolizes finding closure and learning from difficult experiences.",
+            "negative": "Reversed The Three of Swords can indicate unresolved pain, bitterness, or a refusal to let go of the past."
+        },
+        {
+            "name": "Four of Swords",
+            "positive": "The Four of Swords represents rest, recuperation, and the need for self-care. It symbolizes taking time to heal and recharge.",
+            "negative": "Reversed The Four of Swords can indicate avoidance, escapism, or a refusal to face one's problems."
+        },
+        {
+            "name": "Five of Swords",
+            "positive": "The Five of Swords represents victory, triumph, and the power to overcome adversity. It symbolizes emerging victorious from conflict.",
+            "negative": "Reversed The Five of Swords can indicate a sense of defeat, a lack of grace in victory, or a refusal to see another's point of view."
+        },
+        {
+            "name": "Six of Swords",
+            "positive": "The Six of Swords represents transition, change, and the ability to move on from difficult situations. It symbolizes finding peace in the midst of chaos.",
+            "negative": "Reversed The Six of Swords can indicate a reluctance to let go of the past, a fear of change, or a sense of stagnation."
+        },
+        {
+            "name": "Seven of Swords",
+            "positive": "The Seven of Swords represents cunning, deceit, and the ability to outsmart one's opponents. It symbolizes finding creative solutions to problems.",
+            "negative": "Reversed The Seven of Swords can indicate dishonesty, betrayal, or a lack of integrity."
+        },
+        {
+            "name": "Eight of Swords",
+            "positive": "The Eight of Swords represents self-imprisonment, limited thinking, and the need for a fresh perspective. It symbolizes breaking free from mental constraints.",
+            "negative": "Reversed The Eight of Swords can indicate feeling trapped, stuck in one's ways, or a lack of creativity."
+        },
+        {
+            "name": "Nine of Swords",
+            "positive": "The Nine of Swords represents despair, anxiety, and the need for emotional support. It symbolizes facing one's fears and finding hope in difficult times.",
+            "negative": "Reversed The Nine of Swords can indicate excessive worry, a lack of self-care, or a refusal to seek help."
+        },
+        {
+            "name": "Ten of Swords",
+            "positive": "The Ten of Swords represents betrayal, defeat, and the need for healing. It symbolizes moving on from difficult situations and finding peace in the aftermath.",
+            "negative": "Reversed The Ten of Swords can indicate a lack of closure, a refusal to let go of anger or bitterness, or a failure to heal from past wounds."
+        }
+    ],
+    "Pentacles": [
+        {
+            "name": "Ace of Pentacles",
+            "positive": "The Ace of Pentacles represents growth, potential, and the power of manifestation. It symbolizes new beginnings in matters of material abundance and financial success.",
+            "negative": "Reversed The Ace of Pentacles can indicate stagnation, lack of opportunity, or a lack of focus on practical matters."
+        },
+        {
+            "name": "Two of Pentacles",
+            "positive": "The Two of Pentacles represents balance, adaptability, and the ability to juggle multiple responsibilities. It symbolizes finding harmony in chaos.",
+            "negative": "Reversed The Two of Pentacles can indicate a lack of focus, poor time management, or an inability to prioritize."
+        },
+        {
+            "name": "Three of Pentacles",
+            "positive": "The Three of Pentacles represents teamwork, collaboration, and the power of working towards a common goal. It symbolizes finding success through partnerships.",
+            "negative": "Reversed The Three of Pentacles can indicate a lack of support, feelings of isolation, or a refusal to work with others."
+        },
+        {
+            "name": "Four of Pentacles",
+            "positive": "The Four of Pentacles represents security, stability, and the importance of financial responsibility. It symbolizes building a solid foundation for the future.",
+            "negative": "Reversed The Four of Pentacles can indicate greed, hoarding, or a refusal to let go of material possessions."
+        },
+        {
+            "name": "Five of Pentacles",
+            "positive": "The Five of Pentacles represents hardship, struggle, and the need for emotional support. It symbolizes finding hope in difficult times.",
+            "negative": "Reversed The Five of Pentacles can indicate a sense of despair, feelings of hopelessness, or a refusal to ask for help."
+        },
+        {
+            "name": "Six of Pentacles",
+            "positive": "The Six of Pentacles represents generosity, charity, and the power to create positive change. It symbolizes sharing one's resources with others.",
+            "negative": "Reversed The Six of Pentacles can indicate a lack of generosity, an unwillingness to help others, or a focus on material gain rather than spiritual growth."
+        },
+        {
+            "name": "Seven of Pentacles",
+            "positive": "The Seven of Pentacles represents patience, persistence, and the importance of hard work. It symbolizes waiting for results and trusting in the process.",
+            "negative": "Reversed The Seven of Pentacles can indicate a lack of patience, a tendency to give up easily, or a focus on instant gratification rather than long-term success."
+        },
+        {
+            "name": "Eight of Pentacles",
+            "positive": "The Eight of Pentacles represents skill development, mastery, and the importance of attention to detail. It symbolizes finding success through hard work and dedication.",
+            "negative": "Reversed The Eight of Pentacles can indicate a lack of focus, a reluctance to put in the necessary effort, or a failure to recognize one's own talents."
+        },
+        {
+            "name": "Nine of Pentacles",
+            "positive": "The Nine of Pentacles represents self-reliance, prosperity, and the importance of self-care. It symbolizes enjoying the fruits of one's labor and taking pride in one's accomplishments.",
+            "negative": "Reversed The Nine of Pentacles can indicate a lack of gratitude, a focus on material possessions rather than inner peace, or a refusal to acknowledge one's own limitations."
+        },
+        {
+            "name": "Ten of Pentacles",
+            "positive": "The Ten of Pentacles represents legacy, stability, and the importance of building a strong foundation for future generations. It symbolizes finding success through hard work, dedication, and wise decision-making.",
+            "negative": "Reversed The Ten of Pentacles can indicate a focus on material gain rather than personal growth, a lack of concern for others, or a failure to create a lasting legacy."
+        }
+    ]
+}
+

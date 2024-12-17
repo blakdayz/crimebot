@@ -11,22 +11,21 @@ To use CrimeBOT, you'll need to:
 Feel free to ask CrimeBOT for any questions or seek assistance if needed!
 """
 
+
+
 from fastapi import FastAPI
 from sympy.simplify.simplify import bottom_up
 
 from crimebot.chatbot import CrimeBot
+from air_crack_tools import WifiCracker
+from cards import TarotModule
 
-app = FastAPI()
 bot = CrimeBot()
 
 
-@app.get("/")
-async def root():
-    return {
-        "message": "A strange game. The only winning move is not to play. How about a nice game of Crime? #illmob"
-    }
+# options
+START_GAMES = True # This starts the LLM and passes the LL
+def game_step():
+    "'"
 
-
-@app.get("/crime/suggest/")
-async def say_hello(name: str):
-    return bot.s
+def main():
