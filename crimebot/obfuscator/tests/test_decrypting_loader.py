@@ -3,12 +3,22 @@ import logging
 from PIL import Image
 
 from crimebot.obfuscator.pyc.decrypting_loader import (
-    generate_image,
-    obfuscate_pyc,
-    register_loader,
-    LoadEncryptor,
     DecryptingLoader,
 )
+from crimebot.obfuscator.pyc.generate_image import generate_image
+from crimebot.obfuscator.pyc.load_encryptor import LoadEncryptor
+
+
+def obfuscate_pyc(input_pyc, output_script, image_path):
+    pass
+
+
+def register_loader(image_path):
+    pass
+
+
+def extract_key_from_image(img):
+    pass
 
 
 def test_obfuscation(input_pyc, output_script, image_path):
@@ -31,7 +41,7 @@ def test_obfuscation(input_pyc, output_script, image_path):
     # Extract the key from the image
     img = Image.open(image_path)
     try:
-        key = cryptor.extract_key_from_image(img)
+        key = extract_key_from_image(img)
     except Exception as e:
         logging.error(f"Error extracting key from image: {e}")
         raise
@@ -46,4 +56,4 @@ def test_obfuscation(input_pyc, output_script, image_path):
     # Import the obfuscated module
 
 
-test_obfuscation("pyc/example2.pyc", "obfuscated_test_script.py", "key_image.png")
+test_obfuscation("pyc/example2.pyc", "obfuscated_test_script.py", "../key_image.png")

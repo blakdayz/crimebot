@@ -1,4 +1,5 @@
-# PyC Obfuscator
+# Weaponized Application Module (WAM) Subsystem for CrimeBOT
+## Obfuscated Machine Functionality Generator (OMFG!) 
 
 This project consists of a Python module and a Go program designed to obfuscate .pyc files. The goal is to make the original Python code unreadable and executable without additional tools, adding complexity for potential attackers.
 

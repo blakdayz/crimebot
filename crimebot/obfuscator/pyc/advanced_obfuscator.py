@@ -1,6 +1,7 @@
+# advanced_obfuscator
 import marshal
 import dis
-from crypto.Cipher import AES
+from Cryptodome.Cipher import AES
 import base64
 import os
 import random

@@ -1,0 +1,3 @@
+"""
+Weaponized Application Module
+"""
