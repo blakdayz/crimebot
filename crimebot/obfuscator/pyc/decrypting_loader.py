@@ -7,6 +7,9 @@ import types
 from Cryptodome.Cipher import AES
 from PIL import Image
 
+from crimebot.obfuscator.pyc.generate_image import extract_randomkey_from_image
+
+
 class DecryptingLoader:
     """
     Creates a loader for transparent encrypted module detection and decryption
@@ -26,17 +29,7 @@ class DecryptingLoader:
     def _create_module_from_encrypted_code(self, encrypted_code):
         # Extract the key from the image
         if not self.key:
-            with Image.open(self.image_path) as img:
-                pixels = list(img.getdata())
-
-            key_bytes = bytearray()
-            for i in range(16):  # AES key size is 16 bytes
-                pixel_index = i % len(pixels)
-                r, g, b = pixels[pixel_index]
-                byte_value = ((r & 1) << 7) | ((g & 1) << 6) | ((b & 1) << 5)
-                key_bytes.append(byte_value)
-            self.key = base64.b64decode(key_bytes).hex()
-
+            self.key=extract_randomkey_from_image(self.image_path).hex()
         # Decrypt the encrypted code object from the module's source
         encrypted_code_object = base64.b64decode(encrypted_code)
 
@@ -74,3 +67,9 @@ class DecryptingLoader:
         sys.modules[fullname] = module
         logging.debug("Module loaded: {}".format(fullname))
         return module
+
+if __name__=="__main__":
+    loader = DecryptingLoader("patriot3.png")
+    module = loader.load_module("example2.pyc")
+    print(module)
+

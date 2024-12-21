@@ -8,5 +8,8 @@ Each service runs async of others, and can recover from errors.
 
 ### Docker Service
 
+#### Starts, Stops, Manages Docker For Your Bot
 
 ### Command Service 
+
+#### Executes commands (curl, wget, network scanning, metasploit etc)

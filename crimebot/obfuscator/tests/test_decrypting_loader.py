@@ -1,16 +1,29 @@
 import logging
+import os
+from os import write
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
-from crimebot.obfuscator.pyc.decrypting_loader import (
-    DecryptingLoader,
-)
+from crimebot.obfuscator.pyc.decrypting_loader import DecryptingLoader
+from crimebot.obfuscator.pyc.encrypted_module import write_module, inject
 from crimebot.obfuscator.pyc.generate_image import generate_image
 from crimebot.obfuscator.pyc.load_encryptor import LoadEncryptor
 
 
+def create_image_for_key(image_name_to_create: os.PathLike = "patriot3.png"):
+    # Generate an image with the encryption key embedded
+    try:
+
+        generate_image(image_name_to_create)
+        logging.info("Generated image")
+    except Exception as e:
+        logging.error(f"Error generating image: {e}")
+
 def obfuscate_pyc(input_pyc, output_script, image_path):
-    pass
+    write_module(input_pyc, output_script, "key_image.jpg")
+
+
+
 
 
 def register_loader(image_path):
@@ -56,4 +69,8 @@ def test_obfuscation(input_pyc, output_script, image_path):
     # Import the obfuscated module
 
 
-test_obfuscation("pyc/example2.pyc", "obfuscated_test_script.py", "../key_image.png")
+
+if __name__ == "__main__":
+    generate_image("testimg.png")
+
+#test_obfuscation("pyc/example2.pyc", "obfuscated_test_script.py", "../key_image.png")

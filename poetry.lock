@@ -2484,6 +2484,20 @@ sftp = ["paramiko (>=2.7.0)"]
 xxhash = ["xxhash (>=1.4.3)"]
 
 [[package]]
+name = "prometheus-client"
+version = "0.21.1"
+description = "Python client for the Prometheus monitoring system."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "prometheus_client-0.21.1-py3-none-any.whl", hash = "sha256:594b45c410d6f4f8888940fe80b5cc2521b305a1fafe1c58609ef715a001f301"},
+    {file = "prometheus_client-0.21.1.tar.gz", hash = "sha256:252505a722ac04b0456be05c05f75f45d760c2911ffc45f2a06bcaed9f3ae3fb"},
+]
+
+[package.extras]
+twisted = ["twisted"]
+
+[[package]]
 name = "propcache"
 version = "0.2.0"
 description = "Accelerated property cache"
@@ -4324,4 +4338,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "63176d580834ef59cbc0072262b1b83f5d2fd6bd3ffcce470c668b0e5dfef41e"
+content-hash = "7469a4ffae1835988a5bc92b7b71360c82febe289f97875da9b712afd164508f"

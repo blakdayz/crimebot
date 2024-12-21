@@ -1,6 +1,7 @@
 version: '3'
 services:
   command_tools:
+    container_name: command_tools
     build: ..
     ports:
       - "8000:8000"

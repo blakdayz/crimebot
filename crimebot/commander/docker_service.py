@@ -1,70 +1,68 @@
+import os
+import asyncio
+import subprocess
+from typing import Dict, Any
+
+import uvicorn
 import yaml
 from fastapi import FastAPI, Depends, HTTPException
-import subprocess
-import os
 import requests
-from dotenv import load_dotenv
+
 from docker.client import DockerClient
+from docker.errors import ContainerError
 
-load_dotenv()
-DOCKER_COMPOSE_FILE = ".conf/docker-compose.yaml"
-DOCKER_COMPOSE_COMMAND = "docker-compose up --build -d"
-DOCKER_CLIENT = DockerClient(base_url="unix://" + os.environ["DOCKER_SOCKET"])
+app = FastAPI()
+
+DOCKER_COMPOSE_FILE = "cconf/docker-compose.yaml"
+
+# Use environment variables for Docker socket and image name
+DOCKER_SOCKET = os.getenv("DOCKER_SOCKET", "/var/run/docker.sock")
+IMAGE_NAME = os.getenv("IMAGE_NAME", "your_image_name")
+
+DOCKER_CLIENT = DockerClient(base_url=f"unix://{DOCKER_SOCKET}")
 
 
-def get_docker_compose():
+def get_docker_compose() -> Dict[str, Any]:
     with open(DOCKER_COMPOSE_FILE) as f:
         return yaml.safe_load(f)
 
 
-app = FastAPI()
+async def start():
+    docker_compose = get_docker_compose()
+    container_name = next(iter(docker_compose["services"]))
+
+    try:
+        existing_container = DOCKER_CLIENT.containers.get(container_name)
+    except ContainerError:
+        # Container does not exist, create a new one
+        service_config = docker_compose["services"][container_name]
+        command = [service_config["deploy"]["run"]["command"]] + service_config["deploy"]["run"]["args"]
+        existing_container = DOCKER_CLIENT.containers.run(
+            image=IMAGE_NAME,
+            name=container_name,
+            detach=True,
+            command=command
+        )
+    else:
+        if existing_container.status != "running":
+            raise HTTPException(status_code=500, detail="Container is not running.")
+
+    # Install Metasploit in the container once it's running
+    await asyncio.sleep(60)  # Wait for 1 minute to allow the container to start fully
+
+    install_msf_command = (
+        f"docker exec -it {existing_container.id} /bin/sh -c 'apk add --no-cache git && "
+        f"cd /app && git clone https://github.com/rapid7/metasploit-framework.git /opt/metasploit-framework && "
+        f"cd /opt/metasploit-framework && ./msfupdate'"
+    )
+    subprocess.run(install_msf_command, shell=True, check=True)
+
+    return {"message": "Docker container started and Metasploit installed."}
 
 
 @app.post("/start")
-async def start():
-    docker_compose = get_docker_compose()
-    container_name = docker_compose["services"][0]["name"]
-    existing_container = DOCKER_CLIENT.containers.get(container_name)
+async def start_endpoint():
+    return await start()
 
-    if existing_container:
-        if not existing_container.status == "running":
-            raise HTTPException(status_code=500, detail="Container is not running.")
-    else:
-        docker_compose_run = docker_compose["services"][0]["deploy"]["run"]
-        command = [docker_compose_run["command"]]
-        for arg in docker_compose_run["args"]:
-            command.append(arg)
-
-        container = DOCKER_CLIENT.create_container(
-            image="your_image_name", name=container_name, command=command
-        )
-        container.start()
-
-    # Install Metasploit in the container once it's running
-    container_logs = DOCKER_CLIENT.logs(container, stdout=True, stderr=True)
-    container_id = container.id
-    for line in container_logs:
-        if "Starting" in line and container_name in line:
-            break
-
-    # Wait until the container is up before running additional commands
-    DOCKER_WAIT_TIMEOUT = 60
-    timeout = time.time() + DOCKER_WAIT_TIMEOUT
-    while True:
-        container_status = DOCKER_CLIENT.inspect_container(container_id)["State"][
-            "Status"
-        ]
-        if container_status == "running":
-            break
-        if time.time() > timeout:
-            raise HTTPException(
-                status_code=500,
-                detail="Container did not start within the specified timeout.",
-            )
-        time.sleep(1)
-
-    # Run the command to install Metasploit in the container
-    install_msf_command = "docker exec -it {} /bin/sh -c 'apk add --no-cache git && cd /app && git clone https://github.com/rapid7/metasploit-framework.git /opt/metasploit-framework && cd /opt/metasploit-framework && ./msfupdate'"
-    subprocess.run(install_msf_command.format(container_id), shell=True, check=True)
-
-    return {"message": "Docker container started and Metasploit installed."}
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

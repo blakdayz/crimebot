@@ -9,7 +9,7 @@ from sys import meta_path
 from crimebot.obfuscator.pyc.decrypting_loader import DecryptingLoader
 
 
-def write_module(to_encrypt_path:os.PathLike = pathlib.Path("./example.py"), output_path:os.PathLike=pathlib.Path("./example.py")):
+def write_module(to_encrypt_path:os.PathLike = pathlib.Path("./example.py"), output_path:os.PathLike=pathlib.Path("./example.pyc")):
     """ Encrypts the module and writes the encrypted cache file to the output_path """
     from crimebot.obfuscator.pyc.load_encryptor import LoadEncryptor
     encryptor = LoadEncryptor()
@@ -28,3 +28,8 @@ def inject():
         logging.debug(f"Loaded  module {loaded_module.__name__}")
     except ImportError as e:
         print(e)
+
+
+if __name__ == "__main__":
+    write_module()
+    inject()
