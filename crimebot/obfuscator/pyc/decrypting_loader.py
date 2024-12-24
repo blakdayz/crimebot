@@ -15,6 +15,7 @@ class DecryptingLoader:
     Creates a loader for transparent encrypted module detection and decryption
     from a simple shared stego image key using sys.meta_path injection
     """
+
     def __init__(self, image_path):
         self.image_path = image_path
         self.key = None
@@ -29,7 +30,7 @@ class DecryptingLoader:
     def _create_module_from_encrypted_code(self, encrypted_code):
         # Extract the key from the image
         if not self.key:
-            self.key=extract_randomkey_from_image(self.image_path).hex()
+            self.key = extract_randomkey_from_image(self.image_path).hex()
         # Decrypt the encrypted code object from the module's source
         encrypted_code_object = base64.b64decode(encrypted_code)
 
@@ -68,8 +69,8 @@ class DecryptingLoader:
         logging.debug("Module loaded: {}".format(fullname))
         return module
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     loader = DecryptingLoader("patriot3.png")
     module = loader.load_module("example2.pyc")
     print(module)
-

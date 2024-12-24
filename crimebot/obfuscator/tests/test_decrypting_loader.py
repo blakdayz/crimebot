@@ -19,11 +19,9 @@ def create_image_for_key(image_name_to_create: os.PathLike = "patriot3.png"):
     except Exception as e:
         logging.error(f"Error generating image: {e}")
 
+
 def obfuscate_pyc(input_pyc, output_script, image_path):
     write_module(input_pyc, output_script, "key_image.jpg")
-
-
-
 
 
 def register_loader(image_path):
@@ -69,8 +67,7 @@ def test_obfuscation(input_pyc, output_script, image_path):
     # Import the obfuscated module
 
 
-
 if __name__ == "__main__":
     generate_image("testimg.png")
 
-#test_obfuscation("pyc/example2.pyc", "obfuscated_test_script.py", "../key_image.png")
+# test_obfuscation("pyc/example2.pyc", "obfuscated_test_script.py", "../key_image.png")

@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "crimebot"
-version = "0.1.0"
-description = "A parody bot designed come up with, create, articulate, and even to do the crime so you don't do the time. (For entertainment purposes only)"
+version = "0.1.2"
+description = "A bot designed come up with, create, articulate, and even to do the crime so you don't do the time. (For entertainment purposes only)"
 authors = ["blak <blakdayz@gmail.com"]
 readme = "README.md"
 packages = [{include="crimebot/*.py"}]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python=">=3.12,<3.13"
 uvicorn = "^0.32.1"
 fastapi = "^0.115.5"
 transformers = "^4.46.3"
@@ -19,10 +19,16 @@ llvmlite = "^0.43.0"
 numba = "^0.60.0"
 outetts = "^0.2.1"
 cryptography = "^44.0.0"
-crypto = "^1.4.1"
+crypto ="^1.4.1"
 pycrypto = "^2.6.1"
 docker = "^7.1.0"
 prometheus-client = "^0.21.1"
+manim = "^0.18.1"
+cookiecutter = "^2.6.0"
+httpx = "^0.28.1"
+pytest = "^8.3.4"
+sqlalchemy = "^2.0.36"
+python-nmap = "^0.7.1"
 
 
 [build-system]

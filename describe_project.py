@@ -2,6 +2,7 @@
 Written by blak, MIT License, all that rizz
 Run this to get a project output in markdown and ready for AI analysis of your how project
 """
+
 import os
 import json
 
@@ -51,9 +52,7 @@ except ModuleNotFoundError:
             toml.TomlDecodeError
                 If there is an error in parsing the TOML file.
             """
-            with open(
-                filepath, "r", encoding="utf-8"
-            ) as f:  # Text mode for toml
+            with open(filepath, "r", encoding="utf-8") as f:  # Text mode for toml
                 return toml.load(f)
 
     except ModuleNotFoundError:
@@ -86,9 +85,7 @@ def build_markdown(directory, output_file):
                 # PEP 621 standard
                 project = pyproject_data["project"]
                 project_name = project.get("name", project_name)
-                project_description = project.get(
-                    "description", project_description
-                )
+                project_description = project.get("description", project_description)
                 readme = project.get("readme", None)
                 if isinstance(readme, str):
                     readme_path = os.path.join(directory, readme)
@@ -97,15 +94,11 @@ def build_markdown(directory, output_file):
                     readme_file = readme.get("file")
                     if readme_file:
                         readme_path = os.path.join(directory, readme_file)
-            elif (
-                "tool" in pyproject_data and "poetry" in pyproject_data["tool"]
-            ):
+            elif "tool" in pyproject_data and "poetry" in pyproject_data["tool"]:
                 # If using Poetry
                 poetry = pyproject_data["tool"]["poetry"]
                 project_name = poetry.get("name", project_name)
-                project_description = poetry.get(
-                    "description", project_description
-                )
+                project_description = poetry.get("description", project_description)
                 readme = poetry.get("readme", None)
                 if readme:
                     readme_path = os.path.join(directory, readme)

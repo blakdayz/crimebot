@@ -1,4 +1,6 @@
-from crimebot.obfuscator.quaternion import Quaternion
+from typing import List
+
+from crimebot.hybrid_compute.quaternion import Quaternion
 
 
 class QuaternionEncoder:

@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import os
 
+
 class WamProviderBase(ABC):
     """
     An abstract base class that defines the core functionality of a (not so) Weak Ass Malware Module (WAM) provider.
@@ -27,7 +28,9 @@ class WamProviderBase(ABC):
         pass
 
     @abstractmethod
-    def compile_python_code(self, source_dir: os.PathLike, env_path: os.PathLike) -> None:
+    def compile_python_code(
+        self, source_dir: os.PathLike, env_path: os.PathLike
+    ) -> None:
         """
         Compiles Python code in the given source directory and writes the compiled files to the given output directory.
 

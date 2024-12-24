@@ -1,4 +1,5 @@
 import os
+from cmath import sin
 
 import gtts.tts
 import outetts
@@ -6,6 +7,32 @@ from sympy import false
 from sympy.simplify.simplify import bottom_up
 from torch.cuda import temperature
 from gtts import *
+
+from manim import *
+
+
+class AITalking(Scene):
+    def construct(self):
+        # Set up the mouth shape
+        mouth = VMobject()
+        for i in range(-20, 21):
+            x = i / 10
+            y = sin(x * PI) * 0.5 + 0.5
+            mouth.points.append([x, y, 0])
+
+        # Animate the mouth
+        for t in np.linspace(0, 8 * PI, 200):
+            mouth.shift(LEFT * sin(t))
+
+            self.play(
+                Create(mouth),
+                run_time=0.1,
+            )
+
+            if t == 0:
+                self.wait(0.5)  # Delay before starting to "speak"
+
+        self.remove(mouth)
 
 
 class VoiceProvider:

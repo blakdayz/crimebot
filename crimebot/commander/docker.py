@@ -5,7 +5,10 @@ from prometheus_client import Gauge
 
 COMPOSE_FILE = "docker-compose.yml"
 DOCKER_COMPOSE = Compose(COMPOSE_FILE)
-DOCKER_CONTAINERS_GAUGE = Gauge("docker_containers_running", "Number of running Docker Compose containers")
+DOCKER_CONTAINERS_GAUGE = Gauge(
+    "docker_containers_running", "Number of running Docker Compose containers"
+)
+
 
 def check_docker_daemon():
     try:
@@ -17,9 +20,11 @@ def check_docker_daemon():
             detail=f"Docker daemon is not running: {e}",
         )
 
+
 def start_containers(daemon_check: bool = Depends(check_docker_daemon)):
     DOCKER_COMPOSE.up(detached=True)
     DOCKER_CONTAINERS_GAUGE.set(len(get_running_containers()))
+
 
 def get_running_containers():
     compose_file_path = find_docker_compose_file(COMPOSE_FILE)
@@ -29,6 +34,8 @@ def get_running_containers():
     client = docker.from_env()
     containers = client.containers.list(all=True)
 
-    running_containers = {container.name for container in containers if container.status == "running"}
+    running_containers = {
+        container.name for container in containers if container.status == "running"
+    }
 
     return container_names & running_containers

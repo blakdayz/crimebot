@@ -1,0 +1,12 @@
+{
+  "panels": [
+  ],
+  "time": {
+    // Define time-related configurations here
+  },
+  "title": "Chatbot Dashboard",
+  "id": null,
+  "uid": null,
+  "version": 0,
+  "links": ["https://localhost:8000"]
+}

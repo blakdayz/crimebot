@@ -6,7 +6,12 @@ import tempfile
 logging.basicConfig(level=logging.DEBUG, filename="../test_build.log", filemode="a")
 
 import unittest
-from crimebot.obfuscator.wam_provider import WamProvider, WAM_PROVIDER_OUTPUT_DIR, LAUNCHER_SOURCE_PATH
+from crimebot.obfuscator.wam_provider import (
+    WamProvider,
+    WAM_PROVIDER_OUTPUT_DIR,
+    LAUNCHER_SOURCE_PATH,
+)
+
 
 class TestWamExecution(unittest.TestCase):
     def setUp(self):
@@ -27,7 +32,9 @@ class TestWamExecution(unittest.TestCase):
 
             # Compile Python code to pyc files
             source_dir = pathlib.Path(__file__).parent / "payloads"
-            output_dir = os.path.join(env_path, 'lib', 'python3.12', 'site-packages', 'crimebot', 'payloads')
+            output_dir = os.path.join(
+                env_path, "lib", "python3.12", "site-packages", "crimebot", "payloads"
+            )
             self.provider.compile_python_code(source_dir, output_dir)
             logging.info("Compiled Python code")
 
@@ -45,7 +52,9 @@ class TestWamExecution(unittest.TestCase):
 
     def tearDown(self):
         ## Clean up artifacts created during testing
-        #self.provider.wipe_custom_artifacts(WAM_PROVIDER_OUTPUT_DIR)
+        # self.provider.wipe_custom_artifacts(WAM_PROVIDER_OUTPUT_DIR)
         pass
+
+
 if __name__ == "__main__":
     unittest.main()

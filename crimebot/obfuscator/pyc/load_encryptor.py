@@ -1,4 +1,4 @@
-#load_encryptor
+# load_encryptor
 import logging
 import pickle
 from Cryptodome.Cipher import AES
@@ -15,8 +15,10 @@ class LoadEncryptor:
         self.key = key or os.urandom(16)
 
     @staticmethod
-    def encrypt_code_object(code_data, image_key_path: os.PathLike = '../keys/key_image.png'):
-        key =''
+    def encrypt_code_object(
+        code_data, image_key_path: os.PathLike = "../keys/key_image.png"
+    ):
+        key = ""
         try:
             key = extract_randomkey_from_image(image_key_path)
         except Exception as e:
@@ -30,10 +32,8 @@ class LoadEncryptor:
             return base64.b64encode(nonce + ciphertext + tag).decode()
 
 
-
-if __name__ == '__main__':
-    cryptor = LoadEncryptor('../keys/key_image.png')
+if __name__ == "__main__":
+    cryptor = LoadEncryptor("../keys/key_image.png")
     print(cryptor.encrypt_code_object(pickle.dumps("print('Hello, World!')")))
 
     # Output: Encrypted code object as a base64 string
-

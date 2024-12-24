@@ -1,7 +1,9 @@
+import logging
 import random
-from http.client import HTTPException
+import sys
 from typing import List
 
+from crimebot.chatbot.animations.AITalker import AITalking
 from crimebot.scanners.air_crack_tools import WiFiCracker
 from crimebot.voice_services import VoiceProvider
 
@@ -257,15 +259,30 @@ async def crack_wifi(bssids: List[str]):
             else:
                 result[bssid] = {"success": True}
     except Exception as e:
-        raise HTTPException(
-            status_code=500, detail="Error while cracking WiFi passwords: " + str(e)
-        )
+        logging.error(e)
+    finally:
+        return {"bssids": result}
 
-    return {"bssids": result}
+
+def generate_with_animation(self, text, run_time=8):
+    if not self.use_gtts:
+        # Display Manim scene with mouth animation and text
+        AITalking(text=text, run_time=run_time).render()
+
+        # Generate speech using outetts or gTTS (not shown in the scene)
+        if self.interface is not None:
+            self.output = self.interface.generate(
+                text=text,
+                temperature=0.1,
+                repetition_penalty=1.1,
+                max_length=self.n_ctx,
+            )
+            self.output.play()
+    else:
+        bot.tts(text)
 
 
 if __name__ == "__main__":
-
     # Suggest a crime
 
     # Provide campaign advice for a specific target

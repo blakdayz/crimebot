@@ -15,7 +15,7 @@ REQUIREMENTS_FILE: Union[os.PathLike, None] = os.path.join(
 )
 
 PAYLOAD_NAME: Union[os.PathLike, None] = os.path.join(
-    os.path.dirname(__file__), 'payloads', "example2.txt"
+    os.path.dirname(__file__), "payloads", "example2.txt"
 )
 
 # Mapping of environment variables and their default values. These can be overridden by user-defined
@@ -28,5 +28,3 @@ ENV_VARS: Dict[str, Union[str, bool, int]] = {
 
 if __name__ == "__main__":
     print(ENV_VARS)
-
-

@@ -36,12 +36,11 @@ async def start():
     except ContainerError:
         # Container does not exist, create a new one
         service_config = docker_compose["services"][container_name]
-        command = [service_config["deploy"]["run"]["command"]] + service_config["deploy"]["run"]["args"]
+        command = [service_config["deploy"]["run"]["command"]] + service_config[
+            "deploy"
+        ]["run"]["args"]
         existing_container = DOCKER_CLIENT.containers.run(
-            image=IMAGE_NAME,
-            name=container_name,
-            detach=True,
-            command=command
+            image=IMAGE_NAME, name=container_name, detach=True, command=command
         )
     else:
         if existing_container.status != "running":
@@ -63,6 +62,7 @@ async def start():
 @app.post("/start")
 async def start_endpoint():
     return await start()
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

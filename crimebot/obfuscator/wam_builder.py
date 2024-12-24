@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class WAMBuilder(ABC):
     """
     An abstract base class (interface) that defines the contract for building a (not so) Weak Ass Malware Module (WAM)

@@ -1,7 +1,8 @@
 import os
 from PIL import Image
 
-def generate_random_key_image(image_path: os.PathLike=None):
+
+def generate_random_key_image(image_path: os.PathLike = None):
     # Create an image with a random key embedded in it
     img = Image.new("RGB", (16, 16), color="white")
     pixels = list(img.getdata())
@@ -18,6 +19,7 @@ def generate_random_key_image(image_path: os.PathLike=None):
         img.save(image_path, "png")
     return img, bytes
 
+
 def extract_randomkey_from_image(image_path: os.PathLike):
     """
     Extracts the random key from the image
@@ -33,6 +35,7 @@ def extract_randomkey_from_image(image_path: os.PathLike):
         key += bytes([byte])
 
     return key
+
 
 if __name__ == "__main__":
     img, key_bytes = generate_random_key_image("../keys/pyc.jpg")
